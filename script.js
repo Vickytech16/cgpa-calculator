@@ -72,10 +72,10 @@ function calculate(box_no)
  for (i=1;i<=box_no;i++)
  {
   gradeid="grade"+String(i)   
-  currgrade=($(`#${gradeid}`).val()) // store grade value
+  currgrade=(Number($(`#${gradeid}`).val())) // store grade value
   
   creditid="credit"+String(i)
-  currcredit=($(`#${creditid}`).val()) // store credit value
+  currcredit=(Number($(`#${creditid}`).val())) // store credit value
 
   sumtotal=sumtotal+(currgrade*currcredit) // grade*credit
   credittotal=credittotal+currcredit // total credits
@@ -84,12 +84,11 @@ function calculate(box_no)
  let cgpa=sumtotal/credittotal
  console.log(cgpa)
 
- if (typeof(cgpa)=="number")
-  $("#check").after(`<p id="cgpa" style="font-weight: bold">Your CGPA is ${cgpa}</p>`)
- else
+ if (cgpa=="NaN")
   $("#check").after(`<p id="cgpa" style="color: red">Select all values</p>`)
+ else
+  $("#check").after(`<p id="cgpa">Your SGPA is ${cgpa}</p>`)
 }
-
 
 
 
